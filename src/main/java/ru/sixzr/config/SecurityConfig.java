@@ -17,10 +17,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //  @Autowired
 //  public UserService userService;
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
 
 //  @Autowired
 //  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
