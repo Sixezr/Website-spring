@@ -1,0 +1,125 @@
+body {
+    background-color: #eeeeee;
+}
+
+p.first-red::first-letter {
+    font-size: 1.5em;
+    color: #E04E35;
+}
+
+.price:after {
+    content: "\20BD";
+}
+
+.account-form {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.notification {
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    margin: 10px;
+    padding: 10px;
+    opacity: 0.7;
+}
+
+.product-form {
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.register-form {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.album {
+    background-color: #eeeeee;
+}
+
+.nav-link, .nav-link:visited {
+    color: #E04E35;
+}
+
+.nav-link:hover {
+    color: #A13927;
+}
+
+.vk {
+    color: #E04E35;
+}
+
+.container {
+    margin-top: 25px;
+}
+
+.submit-button {
+    color: white;
+    border-radius: 50px;
+    background-color: #E04E35;
+    border-color: #E04E35;
+}
+
+.submit-button:hover {
+    color: white;
+    background-color: #A13927;
+    border-color: #A13927;
+}
+
+.form-control {
+    margin-bottom: 25px;
+}
+
+.not-found {
+    font-size: 6rem;
+    text-align: center;
+}
+
+#carousel {
+    width: 10px;
+    height: 10px;
+}
+
+#logo {
+    margin-right: 10px;
+}
+
+#register-href, #register-href:visited {
+    color: #E04E35;
+    text-decoration: none;
+}
+
+#register-href:hover {
+    color: #A13927;
+}
+
+#reg-title {
+    color: #E04E35;
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+}
+
+#error {
+    padding-bottom: 10px;
+    color: red;
+}
+
+#ok {
+    padding-bottom: 10px;
+    color: green;
+}
+
+#notification-field {
+    position: fixed;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    width: 20%;
+    padding: 15px;
+    z-index: 9999;
+}
