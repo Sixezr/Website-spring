@@ -1,12 +1,11 @@
 package ru.sixzr.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
@@ -17,10 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //  @Autowired
 //  public UserService userService;
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+  @Autowired
+  public PasswordEncoder passwordEncoder;
 
 //  @Autowired
 //  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
