@@ -18,24 +18,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Не может быть пустым")
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "Не может быть пустым")
     @Column(name = "second_name")
     private String secondName;
 
-    @NotBlank
+    @NotBlank(message = "Не может быть пустым")
     @Column(nullable = false)
     private String password;
 
     @Email
-    @NotBlank
+    @NotBlank(message = "Не может быть пустым")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Не может быть пустым")
     @Column(nullable = false, unique = true)
     private String phone;
 
@@ -110,7 +110,6 @@ public class User {
     }
 
     // Needed methods
-
 
     @Override
     public String toString() {

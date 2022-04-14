@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.sixzr.models.forms.LoginForm;
 
 @Controller
-@RequestMapping("login")
+@RequestMapping("/login")
 public class LoginController {
 
     @GetMapping
