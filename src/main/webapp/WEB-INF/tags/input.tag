@@ -9,21 +9,19 @@
 <%@attribute name="cssClass" required="false" type="java.lang.String"%>
 <%@attribute name="label" required="false" type="java.lang.String"%>
 <%@attribute name="pattern" required="false" type="java.lang.String"%>
+<%@attribute name="placeholder" required="false" type="java.lang.String"%>
 <%@attribute name="required" required="false" type="java.lang.Boolean"%>
 
 
 <div class="mb-3${status.error ? ' has-error' : '' }">
-    <c:if test="${empty label}">
-        <c:set var="label" value="${fn:toUpperCase(fn:substring(path, 0, 1))}${fn:toLowerCase(fn:substring(path, 1,fn:length(path)))}" />
-    </c:if>
 
     <spring:bind path="${path}">
 
-        <label class="control-label col-sm-3" for="${path}">${label} <span class="required">*</span> </label>
+        <label class="control-label col-sm-3" for="${path}">${label} </label>
 
         <div class="mb-3">
 
-            <form:input pattern="${pattern}" required="required" path="${path}" cssClass="${empty cssClass ? 'form-control' : cssClass}"/>
+            <form:input placeholer="${placeholder}" pattern="${pattern}" required="required" path="${path}" cssClass="${empty cssClass ? 'form-control' : cssClass}"/>
 
             <c:if test="${status.error}">
                 <span class="help-block">${status.errorMessage}</span>
