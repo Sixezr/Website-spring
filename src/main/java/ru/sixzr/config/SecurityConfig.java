@@ -39,10 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .tokenValiditySeconds(60 * 60 * 24 * 365)
                 .and().authorizeRequests()
                     .antMatchers("/register").permitAll()
-                    .antMatchers("/profile").authenticated()
+                    .antMatchers("/account").authenticated()
                 .and().formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/profile")
+                    .defaultSuccessUrl("/account")
                     .usernameParameter("email")
                     .passwordParameter("password")
                     .failureUrl("/login?error").permitAll();

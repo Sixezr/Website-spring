@@ -24,7 +24,7 @@
             <form:input placeholer="${placeholder}" pattern="${pattern}" required="required" path="${path}" cssClass="${empty cssClass ? 'form-control' : cssClass}"/>
 
             <c:if test="${status.error}">
-                <span class="help-block">${status.errorMessage}</span>
+                <span class="help-block text-danger">${status.errorMessage}</span>
 
             </c:if>
 
