@@ -22,7 +22,7 @@
             <div><a href="<c:url value="/register"/>" id="register-href">Нет аккаунта? Создайте его!</a></div>
 
             <div>
-                <input type="checkbox" id="remember" name="remember">
+                <input type="checkbox" id="remember" name="rememberMe">
                 <label for="remember">Запомнить меня</label>
             </div>
 

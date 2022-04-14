@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import ru.sixzr.services.UserService;
 
 @EnableWebSecurity
@@ -14,13 +15,16 @@ import ru.sixzr.services.UserService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public UserService userService;
+    private UserService userService;
 
     @Autowired
-    public PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    private PersistentTokenRepository tokenRepository;
+
+    @Autowired
+    private void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
     }
 
@@ -28,15 +32,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-        http.authorizeRequests()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/profile").authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/profile")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .failureUrl("/login?error").permitAll();
+        http
+                .rememberMe()
+                    .rememberMeParameter("rememberMe")
+                    .tokenRepository(tokenRepository)
+                    .tokenValiditySeconds(60 * 60 * 24 * 365)
+                .and().authorizeRequests()
+                    .antMatchers("/register").permitAll()
+                    .antMatchers("/profile").authenticated()
+                .and().formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/profile")
+                    .usernameParameter("email")
+                    .passwordParameter("password")
+                    .failureUrl("/login?error").permitAll();
     }
 }
