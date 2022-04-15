@@ -5,6 +5,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -19,10 +20,12 @@ public class User {
     private Long id;
 
     @NotBlank(message = "Не может быть пустым")
+    @Pattern(regexp = "\\p{L}+", message = "Может содержать только буквы")
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @NotBlank(message = "Не может быть пустым")
+    @Pattern(regexp = "\\p{L}+", message = "Может содержать только буквы")
     @Column(name = "second_name")
     private String secondName;
 

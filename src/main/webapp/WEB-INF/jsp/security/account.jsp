@@ -8,14 +8,18 @@
 
     <form:form class="account-form" modelAttribute="user">
 
+        <c:if test="${not empty message}">
+            <div class="global-message alert-success">${message}</div>
+        </c:if>
+
         <div class="row">
 
             <div class="col">
-                <t:input path="firstName" disabled="true"> ${user.getFirstName()} </t:input>
+                <t:input label="Имя" path="firstName" disabled="true"> ${user.getFirstName()} </t:input>
             </div>
 
             <div class="col">
-                <t:input path="secondName" disabled="true"> ${user.getSecondName()} </t:input>
+                <t:input label="Фамилия" path="secondName" disabled="true"> ${user.getSecondName()} </t:input>
             </div>
 
         </div>
@@ -23,18 +27,18 @@
         <div class="row">
 
             <div class="col">
-                <t:input path="email" disabled="true"> ${user.getEmail()} </t:input>
+                <t:input label="E-Mail" path="email" disabled="true"> ${user.getEmail()} </t:input>
             </div>
 
             <div class="col">
-                <t:input path="phone" disabled="true"> ${user.getPhone()} </t:input>
+                <t:input label="Телефон" path="phone" disabled="true"> ${user.getPhone()} </t:input>
             </div>
 
         </div>
 
         <div class="d-grid gap-2">
 
-            <a class="btn btn-primary btn-secondary" href="<spring:url value="/logout" />">Изменить данные</a>
+            <a class="btn btn-primary btn-secondary" href="${spring:mvcUrl('AC#editIndex').build()}">Изменить данные</a>
 
             <a class="btn btn-primary btn-danger" href="<spring:url value="/logout" />">Выйти</a>
 
