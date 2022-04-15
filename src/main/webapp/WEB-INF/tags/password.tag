@@ -9,7 +9,7 @@
 <%@attribute name="cssClass" required="false" type="java.lang.String"%>
 <%@attribute name="label" required="false" type="java.lang.String"%>
 <%@attribute name="pattern" required="false" type="java.lang.String"%>
-
+<%@attribute name="placeholder" required="false" type="java.lang.String"%>
 
 <div class="mb-3">
 
@@ -21,7 +21,7 @@
 
             <div class="mb-3">
 
-                <form:password pattern="${pattern}" required="required" path="${path}" cssClass="${empty cssClass ? 'form-control' : cssClass}"/>
+                <form:password placeholder="${placeholder}" pattern="${pattern}" path="${path}" cssClass="${empty cssClass ? 'form-control' : cssClass}"/>
 
                 <c:if test="${status.error}">
                     <span class="help-block text-danger">${status.errorMessage}</span>

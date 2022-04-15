@@ -11,6 +11,7 @@
 <%@attribute name="pattern" required="false" type="java.lang.String"%>
 <%@attribute name="placeholder" required="false" type="java.lang.String"%>
 <%@attribute name="required" required="false" type="java.lang.Boolean"%>
+<%@attribute name="disabled" required="false" type="java.lang.Boolean"%>
 
 
 <div class="mb-3${status.error ? ' has-error' : '' }">
@@ -21,7 +22,7 @@
 
         <div class="mb-3">
 
-            <form:input placeholer="${placeholder}" pattern="${pattern}" required="required" path="${path}" cssClass="${empty cssClass ? 'form-control' : cssClass}"/>
+            <form:input disabled="${disabled}" placeholer="${placeholder}" pattern="${pattern}" required="required" path="${path}" cssClass="${empty cssClass ? 'form-control' : cssClass}"/>
 
             <c:if test="${status.error}">
                 <span class="help-block text-danger">${status.errorMessage}</span>
