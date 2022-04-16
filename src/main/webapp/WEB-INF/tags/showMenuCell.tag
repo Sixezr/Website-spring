@@ -1,6 +1,7 @@
 <%@tag description="Default Layout Tag" pageEncoding="UTF-8" %>
 <%@attribute name="product" type="ru.sixzr.models.Product" required="true" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="col">
@@ -18,12 +19,11 @@
                         </button>
                     </form>
 
-                        <form action="<spring:url value="/menu/change"/>">
-                            <input name="product_id" value="${product.getId()}" hidden>
-                            <button type="submit" name="action" value="change"
-                                    class="btn btn-sm btn-outline-secondary">Изменить
-                            </button>
-                        </form>
+                    <sec:authorize access="isAuthenticated()">
+                        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                            <a href="<spring:url value="/menu/edit/${product.getId()}"/>" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                        </sec:authorize>
+                    </sec:authorize>
 
                 </div>
                 <small class="text-muted">${product.getPrice()} р</small>

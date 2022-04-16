@@ -24,18 +24,26 @@ public class FileManager {
         this.secureRandom = new SecureRandom();
     }
 
-    public String uploadImage(InputStream inputStream) {
+    public String uploadImage(InputStream inputStream) throws IOException {
         File file = new File(PATH_TO_WEB.resolve(generateRandomName()) + EXTENSION);
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
 
-        try {
-            Files.copy(inputStream, file.toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Files.copy(inputStream, file.toPath());
         return file.getName();
+    }
+
+    public void uploadNewImage(InputStream inputStream, String oldName) throws IOException {
+        File file = new File(PATH_TO_WEB.resolve(oldName).toString());
+
+        file.delete();
+        Files.copy(inputStream, file.toPath());
+    }
+
+    public void deleteImage(String name) {
+        File file = new File(PATH_TO_WEB.resolve(name).toString());
+        file.delete();
     }
 
     private String generateRandomName() {

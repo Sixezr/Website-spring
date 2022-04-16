@@ -10,6 +10,10 @@
 
         <div class="container">
 
+            <c:if test="${not empty message}">
+                <div class="global-message alert-success">${message}</div>
+            </c:if>
+
             <sec:authorize access="isAuthenticated()">
               <sec:authorize access="hasAuthority('ROLE_ADMIN')">
                   <a href="${spring:mvcUrl('MC#createIndex').build()}" class="btn btn-secondary" > Добавить товар</a>

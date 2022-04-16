@@ -6,7 +6,7 @@
 
 <t:mainLayout title="Добавить">
     <div class="container">
-        <form:form enctype="multipart/form-data" cssClass="product-form" method="post" modelAttribute="creatingProductForm">
+        <form:form enctype="multipart/form-data" cssClass="product-form" method="post" modelAttribute="productForm">
 
             <h3>Добавить товар</h3>
 
