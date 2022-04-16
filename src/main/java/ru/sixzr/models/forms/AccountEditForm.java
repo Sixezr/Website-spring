@@ -5,12 +5,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class AccountEditForm {
-    @NotNull(message = "Не может быть пустым")
     @NotBlank(message = "Не может быть пустым")
     @Pattern(regexp = "\\p{L}+", message = "Может содержать только буквы")
     private String firstName;
 
-    @NotNull(message = "Не может быть пустым")
     @NotBlank(message = "Не может быть пустым")
     @Pattern(regexp = "\\p{L}+", message = "Может содержать только буквы")
     private String secondName;

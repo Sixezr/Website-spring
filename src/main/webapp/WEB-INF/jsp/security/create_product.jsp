@@ -1,25 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
 <t:mainLayout title="Добавить">
-    <form enctype="multipart/form-data" method="post" class="product-form">
-        <h3>Добавить товар</h3>
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Введите название</label>
-            <input name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Название"
-                   required>
-        </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Введите цену</label>
-            <input name="price" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Цена"
-                   required>
-        </div>
-        <div class="mb-3">
-            <label for="formFileMultiple" class="form-label">Выберите фотографию</label>
-            <input class="form-control" id="formFileMultiple" type="file" name="photo" accept="image/*,image/jpeg"
-                   required>
+    <div class="container">
+        <form:form enctype="multipart/form-data" cssClass="product-form" method="post" modelAttribute="creatingProductForm">
+
+            <h3>Добавить товар</h3>
+
+            <div class="mb-3">
+                <t:input label="Введите название" path="name" required="true" />
+            </div>
+
+            <div class="mb-3">
+                <t:input label="Введите цену" path="price" required="true" />
+            </div>
+
+            <div class="mb-3">
+                <label for="photo" class="form-label">Выберите фотографию</label>
+                <input class="form-control" id="photo" type="file" name="file" accept="image/*,image/jpeg" required>
+            </div>
+
             <input type="submit" value="Добавить">
-        </div>
-    </form>
+
+        </form:form>
+
 </t:mainLayout>

@@ -37,8 +37,7 @@ public class RegistrationController {
     public String registerHandler(
             RedirectAttributes redirectAttributes,
             @ModelAttribute("user") @Valid User user,
-            BindingResult result,
-            ModelMap map
+            BindingResult result
     ) {
         if (!result.hasErrors()) {
             try {
