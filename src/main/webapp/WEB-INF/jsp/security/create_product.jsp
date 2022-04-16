@@ -23,6 +23,11 @@
                 <input class="form-control" id="photo" type="file" name="file" accept="image/*,image/jpeg" required>
             </div>
 
+            <c:if test="${message != null}">
+                <div class="alert-success">Продукт сохранен</div>
+                <br>
+            </c:if>
+
             <input type="submit" value="Добавить">
 
         </form:form>
