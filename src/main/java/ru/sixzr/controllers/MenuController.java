@@ -13,4 +13,9 @@ public class MenuController {
     public String index(ModelMap map) {
         return "";
     }
+
+    @GetMapping("/create")
+    public String createIndex() {
+        return "security/create_product";
+    }
 }
