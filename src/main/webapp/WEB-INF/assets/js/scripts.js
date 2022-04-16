@@ -29,12 +29,12 @@ requestFunction = function (event) {
     let id = 'product_id=' + encodeURIComponent(form.get('product_id'));
 
     let request = new XMLHttpRequest();
-    request.open("POST", context + "/menu", true);
+    request.open("POST","/menu", true);
     request.addEventListener('readystatechange', function () {
         if ((request.readyState === 4) && (request.status === 200)) {
             showNotification();
-        } else if ((request.readyState === 4) && (request.status === 300)) {
-            document.location.href = "login?redirect=" + context + "/menu";
+        } else if (request.readyState === 4) {
+            document.location.href = "login";
         }
     });
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

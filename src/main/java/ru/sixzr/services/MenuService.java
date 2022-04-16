@@ -35,4 +35,8 @@ public class MenuService {
             throw new CreatingProductException("Unknown error", e);
         }
     }
+
+    public Iterable<Product> getProducts() {
+        return productRepository.findAll();
+    }
 }
