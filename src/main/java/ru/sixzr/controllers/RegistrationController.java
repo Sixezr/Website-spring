@@ -16,6 +16,7 @@ import ru.sixzr.exceptions.NotUniquePhoneException;
 import ru.sixzr.models.User;
 import ru.sixzr.services.RegistrationService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller

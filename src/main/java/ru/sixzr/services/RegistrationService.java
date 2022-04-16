@@ -9,6 +9,9 @@ import ru.sixzr.models.User;
 import ru.sixzr.repositories.RoleRepository;
 import ru.sixzr.repositories.UserRepository;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public class RegistrationService {
 
@@ -21,6 +24,9 @@ public class RegistrationService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private HttpServletRequest request;
+
     public void registerUser(User user) {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new NotUniqueEmailException("Duplicate key - email field.");
@@ -28,8 +34,14 @@ public class RegistrationService {
         if (userRepository.findByPhone(user.getPhone()).isPresent()) {
             throw new NotUniquePhoneException("Duplicate key - phone field.");
         }
+        String password = user.getPassword();
         user.addRole(roleRepository.findByRole("ROLE_USER"));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
+        try {
+            request.login(user.getEmail(), password);
+        } catch (ServletException e) {
+            System.out.println(e);
+        }
     }
 }
