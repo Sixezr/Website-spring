@@ -24,6 +24,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("ru.sixzr.repositories")
 @ComponentScan("ru.sixzr.services")
+@ComponentScan("ru.sixzr.managers")
 @PropertySource("classpath:app.properties")
 public class RootConfig {
 

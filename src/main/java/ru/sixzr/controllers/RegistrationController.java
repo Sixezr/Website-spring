@@ -16,6 +16,7 @@ import ru.sixzr.exceptions.NotUniquePhoneException;
 import ru.sixzr.models.User;
 import ru.sixzr.services.RegistrationService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -37,8 +38,7 @@ public class RegistrationController {
     public String registerHandler(
             RedirectAttributes redirectAttributes,
             @ModelAttribute("user") @Valid User user,
-            BindingResult result,
-            ModelMap map
+            BindingResult result
     ) {
         if (!result.hasErrors()) {
             try {
