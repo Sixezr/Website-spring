@@ -7,7 +7,7 @@ logging.level.web=DEBUG
 db.username =
 db.password =
 db.driver = org.postgresql.Driver
-db.url = jdbc:postgresql://localhost:5432/spring
+db.url = jdbc:postgresql://ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/dcksco5lv3sqei
 
 #Hibernate Configuration:
 hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
