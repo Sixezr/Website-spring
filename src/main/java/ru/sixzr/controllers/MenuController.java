@@ -42,7 +42,7 @@ public class MenuController {
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String createIndex(ModelMap map) {
-        map.put("creatingProductForm", new ProductForm());
+        map.put("productForm", new ProductForm());
         return "security/create_product";
     }
 

@@ -24,7 +24,7 @@
             <td><span class="price">${cart.getProducts().getCurrentPriceForProducts()}</span></td>
             <td>${cart.getProducts().getCurrentProductCount()}</td>
             <form method="post">
-                <input name="product_id" value="${product.getId()}" hidden>
+                <input name="productID" value="${product.getId()}" hidden>
                 <td>
                     <button type="submit" class="btn btn-outline-success" name="action" value="add">+</button>
                     <button type="submit" class="btn btn-outline-danger" name="action" value="remove">-</button>
