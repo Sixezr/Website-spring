@@ -18,6 +18,7 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping("/menu")
+@CrossOrigin(origins = "*")
 public class MenuController {
 
     @Autowired
