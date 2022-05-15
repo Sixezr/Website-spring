@@ -34,7 +34,7 @@ public class MenuController {
     public String saveHandler(Principal principal, HttpServletResponse httpServletResponse) {
         if (principal == null) {
             httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            return "not ok";
+            return "not auth";
         }
         return "ok";
     }

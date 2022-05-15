@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring()
+        web.debug(true)
+                .ignoring()
                 .antMatchers("/css/**")
                 .antMatchers("/js/**")
                 .antMatchers("/img/**");
@@ -49,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                     .antMatchers("/register").permitAll()
                     .antMatchers("/account").authenticated()
+                    .antMatchers("/cart").authenticated()
                 .and().formLogin()
                     .loginPage("/login")
                     .defaultSuccessUrl("/account")
