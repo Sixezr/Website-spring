@@ -2,6 +2,7 @@
 spring.profiles.active=jsp
 spring.main.allow-bean-definition-overriding=true
 logging.level.web=DEBUG
+server.error.whitelabel.enabled=false
 
 #DB Properties
 db.username =

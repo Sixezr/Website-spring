@@ -44,7 +44,12 @@ public class MenuService {
     }
 
     public ProductForm getProductFormById(String id) {
-        long identifier = Long.parseLong(id);
+        long identifier;
+        try {
+            identifier = Long.parseLong(id);
+        } catch (NumberFormatException e) {
+            throw new NotFoundProductException(id);
+        }
         Product product = productRepository.findById(identifier)
                 .orElseThrow(() -> new NotFoundProductException(id));
 
