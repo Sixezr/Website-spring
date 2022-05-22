@@ -68,12 +68,6 @@
             <artifactId>spring-boot-starter-validation</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-        <!-- Could be useful. May be added in future versions. -->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-cache</artifactId>-->
-        <!--<version>${spring-boot.version}</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -129,12 +123,6 @@
             <version>1.2.6</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>1.7.32</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -151,7 +139,7 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.3</version>
                 <configuration>
-                    <appName>myaso-v2</appName>
+                    <appName>myas0</appName>
                 </configuration>
             </plugin>
         </plugins>

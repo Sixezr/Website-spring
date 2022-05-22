@@ -37,17 +37,36 @@ public class CartService {
 
     public void clearCart(Authentication authentication) {
         Optional<User> wrappedUser = userRepository.findByEmail(authentication.getName());
-        if (!wrappedUser.isPresent()) { return; }
+        if (!wrappedUser.isPresent()) {
+            return;
+        }
         cartRepository.deleteAllByUserID(wrappedUser.get().getId());
     }
 
     public void addProduct(Authentication authentication, String id) {
         Optional<User> wrappedUser = userRepository.findByEmail(authentication.getName());
-        if (!wrappedUser.isPresent()) { return; }
+        if (!wrappedUser.isPresent()) {
+            return;
+        }
         try {
             Long identifier = Long.parseLong(id);
+            cartRepository.addProductByID(wrappedUser.get().getId(), identifier);
         } catch (NumberFormatException e) {
             throw new NotIDException("Not int", e);
+        }
+    }
+
+    public void deleteProduct(Authentication authentication, String id) {
+        Optional<User> wrappedUser = userRepository.findByEmail(authentication.getName());
+        if (!wrappedUser.isPresent()) { return; }
+        long identifier = -1L;
+        try {
+            identifier = Long.parseLong(id);
+            cartRepository.removeProductByID(wrappedUser.get().getId(), identifier);
+        } catch (NumberFormatException e) {
+            throw new NotIDException("Not int", e);
+        } catch (Exception e) {
+            cartRepository.removeByProductID(wrappedUser.get().getId(), identifier);
         }
     }
 }

@@ -38,7 +38,8 @@ public class CartController {
                 cartService.addProduct(authentication, productID);
                 return "redirect:" + UriComponentsBuilder.fromPath("/cart").build();
             case "remove":
-                break;
+                cartService.deleteProduct(authentication, productID);
+                return "redirect:" + UriComponentsBuilder.fromPath("/cart").build();
         }
         return "security/cart";
     }
