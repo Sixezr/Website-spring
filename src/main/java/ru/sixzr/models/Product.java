@@ -22,6 +22,9 @@ public class Product {
     @Column(nullable = false)
     private Double price;
 
+    @Transient
+    private String formattedPrice;
+
     @Column(nullable = false, unique = true)
     private String image;
 
@@ -73,5 +76,13 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getFormattedPrice() {
+        return formattedPrice;
+    }
+
+    public void setFormattedPrice(String formattedPrice) {
+        this.formattedPrice = formattedPrice;
     }
 }

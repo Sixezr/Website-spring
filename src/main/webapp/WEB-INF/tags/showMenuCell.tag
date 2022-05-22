@@ -26,7 +26,7 @@
                     </sec:authorize>
 
                 </div>
-                <small class="text-muted">${product.getPrice()} р</small>
+                <small class="text-muted">${product.getFormattedPrice()} р</small>
             </div>
         </div>
     </div>
