@@ -2,6 +2,7 @@ package ru.sixzr.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,8 +11,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 import ru.sixzr.exceptions.CreatingProductException;
 import ru.sixzr.models.forms.ProductForm;
+import ru.sixzr.services.CartService;
 import ru.sixzr.services.MenuService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.security.Principal;
@@ -24,6 +27,9 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private CartService cartService;
+
     @GetMapping
     public String index(ModelMap map) {
         map.put("products", menuService.getProducts());
@@ -32,11 +38,15 @@ public class MenuController {
 
     @PostMapping
     @ResponseBody
-    public String saveHandler(Principal principal, HttpServletResponse httpServletResponse) {
+    public String saveHandler(HttpServletRequest request,
+                              Principal principal,
+                              Authentication authentication,
+                              HttpServletResponse httpServletResponse) {
         if (principal == null) {
             httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
             return "not auth";
         }
+        cartService.addProduct(authentication, request.getParameter("product_id"));
         return "ok";
     }
 
