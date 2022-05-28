@@ -29,11 +29,6 @@
 
             <button type="submit" class="submit-button">Войти</button>
 
-            <div>
-            <img src="<c:url value="/img/vk-logo.png"/>" alt="vk" width="32" height="32">
-            <a class="btn vk" href="${spring:mvcUrl('VC#index').build()}">Зайти через Вконтакте</a>
-            </div>
-
         </form:form>
 
     </div>

@@ -4,13 +4,18 @@ import ru.sixzr.models.Cart;
 import ru.sixzr.models.Product;
 import ru.sixzr.models.collections.CustomProductCollections;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Objects;
 
 public class CartAdapter {
+    private static final DecimalFormat FORMAT = new DecimalFormat("#.##");;
+
     private List<Cart> cart;
     private CustomProductCollections products;
     private Double price;
+    private Double priceDollars;
+    private Double course;
 
     public CartAdapter(List<Cart> cart) {
         this.cart = cart;
@@ -71,6 +76,22 @@ public class CartAdapter {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getPriceDollars() {
+        return FORMAT.format(price / course);
+    }
+
+    public void setPriceDollars(Double priceDollars) {
+        this.priceDollars = priceDollars;
+    }
+
+    public Double getCourse() {
+        return course;
+    }
+
+    public void setCourse(Double course) {
+        this.course = course;
     }
 
     @Override

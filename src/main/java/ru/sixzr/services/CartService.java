@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import ru.sixzr.exceptions.NotIDException;
+import ru.sixzr.managers.NetworkManager;
 import ru.sixzr.models.Cart;
 import ru.sixzr.models.User;
 import ru.sixzr.models.adapters.CartAdapter;
@@ -26,13 +27,18 @@ public class CartService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private NetworkManager networkManager;
+
     public CartAdapter getUserCart(Authentication authentication) {
         Optional<User> wrappedUser = userRepository.findByEmail(authentication.getName());
         if (!wrappedUser.isPresent()) {
             return new CartAdapter();
         }
         List<Cart> cart = cartRepository.findAllByUserID(wrappedUser.get().getId());
-        return new CartAdapter(cart);
+        CartAdapter cartAdapter = new CartAdapter(cart);
+        cartAdapter.setCourse(networkManager.getDollarCourse());
+        return cartAdapter;
     }
 
     public void clearCart(Authentication authentication) {

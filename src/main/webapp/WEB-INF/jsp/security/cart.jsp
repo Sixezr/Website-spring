@@ -5,7 +5,8 @@
 <t:mainLayout title="Моя Корзина">
     <div class="container">
         <p class="fs-2 fw-bolder">Моя корзина</p>
-        <p class="fs-4 fw-normal price">Общая стоимость - ${cart.getPrice()}</p>
+        <p class="fs-4 fw-normal price">Общая стоимость в рублях - ${cart.getPrice()}</p>
+        <p class="fs-4 fw-normal">Общая стоимость в долларах - ${cart.getPriceDollars()}$</p>
 
         <c:if test="${!cart.getProducts().isEmpty()}">
             <t:showCartTable products="${cart.getProducts()}"/>
