@@ -2,6 +2,7 @@ package ru.sixzr.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.sixzr.converters.PrettyPriceConverter;
 import ru.sixzr.exceptions.CreatingProductException;
 import ru.sixzr.exceptions.NotFoundProductException;
 import ru.sixzr.managers.FileManager;
@@ -23,6 +24,9 @@ public class MenuService {
     @Autowired
     private FileManager fileManager;
 
+    @Autowired
+    private PrettyPriceConverter converter;
+
     public void createProduct(ProductForm productForm) {
         try {
             InputStream is = productForm.getFile().getInputStream();
@@ -40,11 +44,20 @@ public class MenuService {
     }
 
     public Iterable<Product> getProducts() {
-        return productRepository.findAll();
+        Iterable<Product> products = productRepository.findAll();
+        for (Product product : products) {
+            product.setFormattedPrice(converter.convert(product.getPrice()));
+        }
+        return products;
     }
 
     public ProductForm getProductFormById(String id) {
-        long identifier = Long.parseLong(id);
+        long identifier;
+        try {
+            identifier = Long.parseLong(id);
+        } catch (NumberFormatException e) {
+            throw new NotFoundProductException(id);
+        }
         Product product = productRepository.findById(identifier)
                 .orElseThrow(() -> new NotFoundProductException(id));
 

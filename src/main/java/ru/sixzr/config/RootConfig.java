@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import ru.sixzr.converters.PrettyPriceConverter;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -85,5 +86,10 @@ public class RootConfig {
         properties.put("hibernate.enable_lazy_load_no_trans", env.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
 
         return properties;
+    }
+
+    @Bean
+    public PrettyPriceConverter prettyPriceConverter() {
+        return new PrettyPriceConverter();
     }
 }
